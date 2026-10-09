@@ -4,3 +4,14 @@ svelte
 bookstack
 docs
 wordpress
+.git
+.github
+.env
+.env.secret
+.venv
+venv
+**/__pycache__
+*.pkl
+token.json
+credentials.json
+comms.yaml
