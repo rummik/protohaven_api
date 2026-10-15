@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      # Pinned to the SHA `main` pointed at; its latest tag is a different
+      # commit. See .pinact.yaml.
+      - dependency-name: nhevia/discord-styled-releases

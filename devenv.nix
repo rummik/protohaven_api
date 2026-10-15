@@ -2,6 +2,7 @@
   # https://devenv.sh/reference/options/
   packages = [
     pkgs.cypress
+    pkgs.pinact
     # config.packages.default
   ];
 
@@ -59,6 +60,16 @@
         pylint -rn -sn \
           --generated-members=client.tasks,client.projects $(git ls-files '*.py') \
           --disable=logging-fstring-interpolation,import-error
+      '';
+    };
+
+    # Checks that GitHub Actions are pinned to commit SHAs. To pin new ones,
+    # run `pinact run`; Dependabot keeps existing pins up to date.
+    "lint:actions" = {
+      before = ["devenv:enterTest"];
+
+      exec = /* sh */ ''
+        pinact run --check
       '';
     };
   };

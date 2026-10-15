@@ -11,7 +11,7 @@ jobs:
     name: Sends custom message on release
     steps:
       - name: Sending message on software channel
-        uses: nhevia/discord-styled-releases@main
+        uses: nhevia/discord-styled-releases@2e5e3982b4d17df8589e5cb0bceff29f58a93e60 # main
         with:
           webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
           webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}

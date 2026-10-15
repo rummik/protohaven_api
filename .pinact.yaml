@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/suzuki-shunsuke/pinact/refs/heads/main/json-schema/pinact.json
+# pinact - https://github.com/suzuki-shunsuke/pinact
+version: 3
+rules:
+  # Pinned by hand to the SHA `main` pointed at; its latest tag (v1.2.3) is a
+  # different commit, and the repo has been dormant since 2023.
+  - ignore: true
+    conditions:
+      - expr: |
+          ActionName == "nhevia/discord-styled-releases"
