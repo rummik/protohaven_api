@@ -39,67 +39,43 @@
   };
 
   scripts = {
-    dev-run-docker.exec =
-      /*
-      sh
-      */
-      ''
-        docker compose watch
-      '';
+    dev-run-docker.exec = /* sh */ ''
+      docker compose watch
+    '';
 
-    "test:svelte".exec =
-      /*
-      sh
-      */
-      ''
-        pushd svelte
-        pnpm test
-        pnpm test:component
-        popd
-      '';
+    "test:svelte".exec = /* sh */ ''
+      pushd svelte
+      pnpm test
+      pnpm test:component
+      popd
+    '';
   };
 
   tasks = {
     "lint:python" = {
       before = ["devenv:enterTest"];
 
-      exec =
-        /*
-        sh
-        */
-        ''
-          pylint -rn -sn \
-            --generated-members=client.tasks,client.projects $(git ls-files '*.py') \
-            --disable=logging-fstring-interpolation,import-error
-        '';
+      exec = /* sh */ ''
+        pylint -rn -sn \
+          --generated-members=client.tasks,client.projects $(git ls-files '*.py') \
+          --disable=logging-fstring-interpolation,import-error
+      '';
     };
   };
 
   processes = {
-    flask.exec =
-      /*
-      sh
-      */
-      ''
-        flask --app protohaven_api.main run
-      '';
+    flask.exec = /* sh */ ''
+      flask --app protohaven_api.main run
+    '';
 
-    svelte.exec =
-      /*
-      sh
-      */
-      ''
-        pushd svelte
-        pnpm run dev
-      '';
+    svelte.exec = /* sh */ ''
+      pushd svelte
+      pnpm run dev
+    '';
 
-    nocodb.exec =
-      /*
-      sh
-      */
-      ''
-        docker compose up nocodb
-      '';
+    nocodb.exec = /* sh */ ''
+      docker compose up nocodb
+    '';
   };
 
   # services = {
@@ -110,16 +86,12 @@
   #   hello
   # '';
 
-  enterTest =
-    /*
-    sh
-    */
-    ''
-      python -m pytest -v
+  enterTest = /* sh */ ''
+    python -m pytest -v
 
-      pushd svelte
-      pnpm test
-      pnpm test:component
-      popd
-    '';
+    pushd svelte
+    pnpm test
+    pnpm test:component
+    popd
+  '';
 }
